@@ -13,13 +13,7 @@ kernel:
 kernel-release:
 	@make -C rux/kernel version=release build
 
-sinit-allocator: kernel-release
-	@make -C sinits version=release kernel=$(shell realpath $(kernel)) test=allocator test
-
-sinit-rlp: kernel-release
-	@make -C sinits version=release kernel=$(shell realpath $(kernel)) test=rlp test
-
-sinit-sputnikvm: kernel-release
-	@make -C sinits version=release kernel=$(shell realpath $(kernel)) test=sputnikvm test
+sinit-wasmi: kernel-release
+	@make -C sinits version=release kernel=$(shell realpath $(kernel)) test=wasmi test
 
 test-all: sinit-allocator sinit-rlp sinit-sputnikvm

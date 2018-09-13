@@ -5,10 +5,12 @@
 #![feature(alloc)]
 #![no_std]
 
+#[macro_use]
 extern crate system;
 extern crate spin;
 extern crate selfalloc;
 extern crate alloc;
+extern crate wasmi;
 
 use system::{CAddr};
 
@@ -29,5 +31,21 @@ fn start(_argc: isize, _argv: *const *const u8) {
         }
     }
 
+    system_print!("hello, wasmi!");
+    let module = wasmi::Module::from_buffer(&[0x00, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00]).unwrap();
+
+    let not_started = wasmi::ModuleInstance::new(
+        &module,
+        &wasmi::ImportsBuilder::default()
+    ).unwrap();
+
+    let instance = not_started.run_start(&mut wasmi::NopExternals).unwrap();
+    system_print!("instance: {:?}", instance);
+
     system::debug_test_succeed();
+}
+
+#[no_mangle]
+pub fn __truncdfsf2() {
+    panic!("Floating points are not supported!");
 }

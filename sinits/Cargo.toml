@@ -4,8 +4,12 @@ version = "0.1.0"
 authors = ["Wei Tang <hi@that.world>"]
 
 [[example]]
-name = "allocator"
+name = "wasmi"
 crate-type = ["staticlib"]
+
+[dependencies.wasmi]
+path = "../wasmi"
+default-features = false
 
 [dependencies.system]
 path = "../rux/system"
