@@ -11,7 +11,7 @@ submodules which points to a revision of
 [Rux](https://source.that.world/source/rux/).
 
 ```lang=bash
-git submodule init --recursive --update
+git submodule update --recursive --init
 ```
 
 After that, install [Nix](https://nixos.org/nix/). Then run:
