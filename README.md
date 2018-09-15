@@ -1,13 +1,13 @@
-# SputnikVM on Rux
+# `wasmi` on Rux
 
-This `no_std` version of SputnikVM allows you to run it on the [Rux
+This `no_std` version of `wasmi` allows you to run it on the [Rux
 microkernel](https://source.that.world/source/rux/).
 
 ## Get Started
 
-To build and run `sputnikvm_nostd`, it needs to be bundled with the
-Rux microkernel and be executed together. First, initialize the
-submodules which points to a revision of
+To build and run `wasmi_nostd`, it needs to be bundled with the Rux
+microkernel and be executed together. First, initialize the submodules
+which points to a revision of
 [Rux](https://source.that.world/source/rux/).
 
 ```lang=bash
@@ -21,18 +21,18 @@ nix-shell
 ```
 
 This will install all the dependencies you need to build the kernel
-and SputnikVM in a specialized Nix location without any modification
-to your actual system.
+and `wasmi` in a specialized Nix location without any modification to
+your actual system.
 
-After that, to run the kernel with SputnikVM init program, run:
+After that, to run the kernel with `wasmi` init program, run:
 
 ```lang=bash
-make sinit-sputnikvm
+make sinit-wasmi
 ```
 
 Under the hook, the script will start a QEMU virtual machine,
-bootstrap the kernel, which will then load the init program and run a
-simple SputnikVM transaction.
+bootstrap the kernel, which will then load the init program and invoke
+a simple WebAssembly module.
 
 ## Bug Reports and Contributing
 
@@ -41,3 +41,6 @@ For bug reports and pull requests related to Rux, please use this
 submitted to [Maniphest](https://source.that.world/maniphest/) and
 refer to [Rux](https://source.that.world/source/rux/)'s contributing
 guide for sending pull requests.
+
+For bug reports and pull requests related to `wasmi`, please use
+`wasmi`'s [issue tracker](https://github.com/paritytech/wasmi).
